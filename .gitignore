@@ -3,6 +3,17 @@
 #
 # Project specific excludes
 #
+# compiled output
+/tmp
+/out-tsc
+# Only exists if Bazel was run
+/bazel-out
+
+chrome-profiler-events*.json
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
 
 tomcat
 
@@ -33,9 +44,16 @@ target/
 *.ipr
 
 # eclipse project file
-.settings/
 .classpath
 .project
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history/*
 
 # NetBeans specific
 nbproject/private/
@@ -45,6 +63,9 @@ dist/
 nbdist/
 nbactions.xml
 nb-configuration.xml
+
+# dependencies
+/node_modules
 
 
 # OS
@@ -57,4 +78,16 @@ release.properties
 pom.xml.releaseBackup
 pom.xml.tag
 /bin/
-/data/
+
+# misc
+/.sass-cache
+/connect.lock
+/coverage
+/libpeerconnection.log
+npm-debug.log
+yarn-error.log
+testem.log
+/typings
+
+# System Files
+Thumbs.db
