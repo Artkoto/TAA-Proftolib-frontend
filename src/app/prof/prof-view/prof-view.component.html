@@ -1,1 +1,14 @@
 <p>prof-view works!</p>
+
+<div >
+  <ul >
+    <app-prof *ngFor = "let prof  of profs"
+              [id] = "prof.id"
+              [name] = "prof.name"
+              [lastname]="prof.lastname"
+              [email]="'Bizou'"
+    >
+    </app-prof>
+  </ul>
+
+</div>

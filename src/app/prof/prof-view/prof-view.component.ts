@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ProfService} from "../../services/prof.service";
 
 @Component({
   selector: 'app-prof-view',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfViewComponent implements OnInit {
 
-  constructor() { }
+  profs : any =[] ;
+  constructor(private profService : ProfService) { }
 
   ngOnInit(): void {
+    this.profs = this.profService.getProfs();
   }
 
 }

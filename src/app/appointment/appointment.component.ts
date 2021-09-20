@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-appointment',
@@ -6,6 +6,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./appointment.component.scss']
 })
 export class AppointmentComponent implements OnInit {
+
+  @Input() id : number = 0;
+  @Input() title : string = '';
+  @Input() prof : any ;
+  @Input() client : any ;
+  @Input() slot : any  ;
+
 
   constructor() { }
 

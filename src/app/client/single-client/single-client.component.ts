@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ClientService} from "../../services/client.service";
 
 @Component({
   selector: 'app-single-client',
@@ -6,10 +7,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./single-client.component.scss']
 })
 export class SingleClientComponent implements OnInit {
+  client : any;
 
-  constructor() { }
+  constructor(private  clientService : ClientService) { }
 
   ngOnInit(): void {
+    this.client = this.clientService.getClientById(0);;
   }
 
 }

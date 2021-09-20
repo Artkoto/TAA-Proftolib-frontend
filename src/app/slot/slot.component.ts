@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-slot',
@@ -6,6 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./slot.component.scss']
 })
 export class SlotComponent implements OnInit {
+
+  @Input() id : number = 0;
+  @Input() begin : Date = new Date() ;
+  @Input() end : Date = new Date() ;
+  @Input() profs : any =[];
+  @Input() appointments : any =[];
 
   constructor() { }
 
