@@ -1,6 +1,10 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {HttpClientModule} from '@angular/common/http';
+import {ButtonModule} from 'primeng/button';
+import {InputTextModule} from "primeng/inputtext";
+import {FormsModule} from "@angular/forms";
+
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -20,6 +24,13 @@ import { ProfSignupComponent } from './prof/prof-signup/prof-signup.component';
 import { ProfAuthComponent } from './prof/prof-auth/prof-auth.component';
 import { ProfAppointmentsComponent } from './prof/prof-appointments/prof-appointments.component';
 import { SingleSlotComponent } from './slot/single-slot/single-slot.component';
+import { ClientHomePageComponent } from './client/client-home-page/client-home-page.component';
+import { ProfHomePageComponent } from './prof/prof-home-page/prof-home-page.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { ClientSettingsComponent } from './client/client-settings/client-settings.component';
+import { ProfSettingsComponent } from './prof/prof-settings/prof-settings.component';
+import { AppointmentViewComponent } from './appointment/appointment-view/appointment-view.component';
+import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
 
 @NgModule({
   declarations: [
@@ -38,12 +49,22 @@ import { SingleSlotComponent } from './slot/single-slot/single-slot.component';
     ProfSignupComponent,
     ProfAuthComponent,
     ProfAppointmentsComponent,
-    SingleSlotComponent
+    SingleSlotComponent,
+    ClientHomePageComponent,
+    ProfHomePageComponent,
+    HomePageComponent,
+    ClientSettingsComponent,
+    ProfSettingsComponent,
+    AppointmentViewComponent,
+    ProfSlotsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ButtonModule,
+    InputTextModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

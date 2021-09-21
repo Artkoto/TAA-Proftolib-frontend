@@ -8,9 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ProfComponent implements OnInit {
 
   @Input() id : number = 0;
-  @Input() name : string = '';
-  @Input() lastname : string = '';
-  @Input() email : string = '';
+  @Input() name : string = 'ProfNmae';
+  @Input() lastname : string = 'ProfLastname';
+  @Input() email : string = 'ProfEmail';
   @Input() appointments : any = [];
   @Input() slots : any = [];
 
