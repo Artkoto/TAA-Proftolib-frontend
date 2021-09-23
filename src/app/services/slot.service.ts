@@ -1,63 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import{Injectable} from '@angular/core';
 import {SlotComponent} from "../slot/slot.component";
+import {ProfComponent} from "../prof/prof.component";
 
-//interface data pour la lecture des donnees
-//TODO à modifier pour adapter à slot
-
+const apiUrl ='http://localhost:9000/slot/';
 export interface User {
-  id:                number;
-  nom:               string;
-  prenom:            string;
-  poste:             string;
-  photo:             string;
-  cv:                string;
-  apropos:           string;
-  numero:            string;
-  email:             string;
-  loisirs:           string;
-  pays:              null;
-  ville:             null;
-  derniereMiseAJour: Date;
-  domaine_activite:  null;
-  offres_recherchee: null;
-  status:            null;
-  formations:        Experience[];
-  experiences:       Experience[];
-  competences:       Competence[];
-  projets:           Projet[];
+  id:       number;
+  email:    string;
+  name:     string;
+  lastname: string;
 }
-
-export interface Competence {
-  id:            number;
-  name:          string;
-  evolution:     number;
-  categorie:     string;
-  sousCategorie: null;
+export interface Slot {
+  id:    number;
+  debut: Date;
+  fin:   Date;
 }
-
-export interface Experience {
-  id:         number;
-  date_debut: Date;
-  date_fin:   Date;
-  name:       string;
-  lieux:      string;
-  pays:       null;
-  ville:      null;
-  detail:     string;
-  outils?:    null | string;
-}
-
-export interface Projet {
-  id:                number;
-  nomProjet:         string;
-  descriptionProjet: string;
-  urlProject:        null | string;
-  gitLink:           string;
-  outils:            string;
-  photo:             string;
-  date_debut:        null;
-  date_fin:          null;
+export interface Appointment {
+  id:    number;
+  title: string;
 }
 
 
@@ -67,17 +27,60 @@ export class SlotService {
   constructor(private http:HttpClient){
   }
 
+  getSlots() : ProfComponent[] {
+    let slots : any []= [] ;
+    this.http.get<Slot[]>(apiUrl+'all').subscribe((data) => {
+        console.log(data);
+        data.forEach(((e)  => {
+          slots.push({
+            id : e.id,
+            begin : e.debut,
+            end : e.fin ,
+          })
+        }));
+      },
+    );
+    return slots;
+  }
+
+  getSlotsByUser(id : number) : ProfComponent[] {
+    let slots : any []= [] ;
+    this.http.get<Slot[]>(apiUrl+'user/id='+id).subscribe((data) => {
+        console.log(data);
+        data.forEach(((e)  => {
+          slots.push({
+            id : e.id,
+            begin : e.debut,
+            end : e.fin ,
+          })
+        }));
+      },
+    );
+    return slots;
+  }
+
   getSlotById(id : number) : SlotComponent {
     let slot : SlotComponent = new SlotComponent();
-    //TODO url du type : http://localhost:8081/slot/id=id
-    this.http.get<User>('http://localhost:9000/personnes/1').subscribe((data) => {
+    this.http.get<Slot>(apiUrl+'id='+id).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           slot.id = data.id;
-          // slot.begin = data.nom;
-          // slot.end = data.prenom;
-          // slot.appointments = data.prenom;
-          // slot.profs = data.prenom;
+           slot.begin = data.debut;
+           slot.end = data.fin;
+        }
+      },
+    );
+    return slot;
+  }
+
+  getSlotByRdv(id : number) : SlotComponent {
+    let slot : SlotComponent = new SlotComponent();
+    this.http.get<Slot>(apiUrl+'rdv/id='+id).subscribe((data) => {
+        console.log(data);
+        if(data!=null) {
+          slot.id = data.id;
+          slot.begin = data.debut;
+          slot.end = data.fin;
         }
       },
     );
@@ -87,16 +90,12 @@ export class SlotService {
 
   addSlot(slot : SlotComponent) : SlotComponent {
     let slotAdded: SlotComponent = new SlotComponent();
-    //TODO url du type : http://localhost:8081/slot/id/update
-    this.http.post<User>('http://localhost:9000/personnes/1',slot).subscribe((data) => {
+    this.http.post<Slot>(apiUrl+'add',slot).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           slotAdded.id = data.id;
-          // slotAdded.begin = data.nom;
-          // slotAdded.end = data.prenom;
-          // slotAdded.appointments = data.prenom;
-          // slotAdded.profs = data.prenom;
-
+          slotAdded.begin = data.debut;
+          slotAdded.end = data.fin;
         }
       },
     );
@@ -105,15 +104,12 @@ export class SlotService {
 
   updateSlot(id : number , slot : SlotComponent) : SlotComponent {
     let slotUpdated : SlotComponent = new SlotComponent();
-    //TODO url du type : http://localhost:8081/slot/id/update
-    this.http.put<User>('http://localhost:9000/personnes/1',slot).subscribe((data) => {
+    this.http.put<Slot>(apiUrl+id+'/update',slot).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           slotUpdated.id = data.id;
-          // slotUpdated.begin = data.nom;
-          // slotUpdated.end = data.prenom;
-          // slotUpdated.appointments = data.prenom;
-          // slotUpdated.profs = data.prenom;
+          slotUpdated.begin = data.debut;
+          slotUpdated.end = data.fin;
         }
       },
     );
