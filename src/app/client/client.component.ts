@@ -8,10 +8,9 @@ import {Component, Input, OnInit} from '@angular/core';
 export class ClientComponent implements OnInit {
 
   @Input() id : number = 0;
-  @Input() name : string = 'Client_name';
-  @Input() lastname : string = 'Client_lastname';
-  @Input() email : string = 'Client_email@email';
-  @Input() appointments : any = [];
+  @Input() name : string = '';
+  @Input() lastname : string = '';
+  @Input() email : string = '';
 
   constructor() { }
 

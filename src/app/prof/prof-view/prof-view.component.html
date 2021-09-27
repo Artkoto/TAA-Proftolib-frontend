@@ -1,14 +1,13 @@
-<p>prof-view works!</p>
-
 <div >
   <ul >
     <app-prof *ngFor = "let prof  of profs"
               [id] = "prof.id"
               [name] = "prof.name"
               [lastname]="prof.lastname"
-              [email]="'Bizou'"
+              [email]="prof.email"
     >
     </app-prof>
   </ul>
+  <button routerLink="../" pButton type="button" label="Retour" class=" p-button-warning mx-2" ></button>
 
 </div>

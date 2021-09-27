@@ -4,6 +4,8 @@ import {HttpClientModule} from '@angular/common/http';
 import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
+import {MenubarModule} from "primeng/menubar";
+import {SharedModule} from "primeng/api";
 
 
 
@@ -31,6 +33,8 @@ import { ClientSettingsComponent } from './client/client-settings/client-setting
 import { ProfSettingsComponent } from './prof/prof-settings/prof-settings.component';
 import { AppointmentViewComponent } from './appointment/appointment-view/appointment-view.component';
 import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
+
+
 
 @NgModule({
   declarations: [
@@ -64,7 +68,9 @@ import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
     HttpClientModule,
     ButtonModule,
     InputTextModule,
-    FormsModule
+    FormsModule,
+    MenubarModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

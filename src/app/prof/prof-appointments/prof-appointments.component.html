@@ -1,1 +1,11 @@
-<p>prof-appointments works!</p>
+<div >
+  <ul >
+    <app-appointment *ngFor = "let rdv  of appointment"
+                     [id] = "rdv.id"
+                     [title]= "rdv.title"
+    >
+    </app-appointment>
+  </ul>
+  <button routerLink="../" pButton type="button" label="Retour" class=" p-button-warning mx-2" ></button>
+
+</div>

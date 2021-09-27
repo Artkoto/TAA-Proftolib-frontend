@@ -1,6 +1,15 @@
-<h2>{{id}}</h2>
-<h3>{{name | titlecase |slice:0:10}}</h3>
-<h3>{{lastname}}</h3>
-<h4>{{email}}</h4>
+<div [ngClass]="{
+    'list-group-item' : true
+}" class="my-1 p-1" style="background-color: khaki;  margin-bottom: 2em ; min-height: 15em;"
 
-<p></p>
+>
+  <div class="">
+    <img src="https://www.w3schools.com/howto/img_avatar.png" class="" style="margin-bottom: 5px;height: 10em ; width: 10em">
+  </div>
+  <div>
+    <h4>{{name | titlecase |slice:0:10}}</h4>
+    <h4>{{lastname}}</h4>
+    <h4>{{email}}</h4>
+  </div>
+  <button routerLink={{id}} pButton type="button" label="Voir" class=" p-button-success mx-2"></button>
+</div>

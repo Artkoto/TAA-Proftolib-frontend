@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ClientComponent} from "../client.component";
+import {ClientAuthComponent} from "../client-auth/client-auth.component";
 
 @Component({
   selector: 'app-client-home-page',
@@ -12,6 +13,8 @@ export class ClientHomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.client = ClientAuthComponent.user;
+
   }
 
 }

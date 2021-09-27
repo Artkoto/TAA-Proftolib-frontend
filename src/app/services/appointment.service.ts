@@ -53,29 +53,37 @@ export class AppointmentService {
     return appointment;
   }
 
-  getAppointmentByUser(id : number) : AppointmentComponent {
-    let appointment : AppointmentComponent = new AppointmentComponent();
-    this.http.get<Appointment>(apiUrl+'user/id='+id).subscribe((data) => {
+  getAppointmentByUser(id : number) : any[] {
+    let appointments : any[] = [];
+    this.http.get<Appointment[]>(apiUrl+'user/id='+id).subscribe((data) => {
         console.log(data);
         if(data!=null) {
-          appointment.id = data.id;
-          appointment.title = data.title;
+          data.forEach(((e)  => {
+            appointments.push({
+              id : e.id,
+              title : e.title,
+            })
+          }));
         }
       },
     );
-    return appointment;
+    return appointments;
   }
-  getAppointmentBySlot(id : number) : AppointmentComponent {
-    let appointment : AppointmentComponent = new AppointmentComponent();
-    this.http.get<Appointment>(apiUrl+'creneau/id='+id).subscribe((data) => {
+  getAppointmentBySlot(id : number) : any[] {
+    let appointments  :any[]=[];
+    this.http.get<Appointment[]>(apiUrl+'creneau/id='+id).subscribe((data) => {
         console.log(data);
         if(data!=null) {
-          appointment.id = data.id;
-          appointment.title = data.title;
+          data.forEach(((e)  => {
+            appointments.push({
+              id : e.id,
+              title : e.title,
+            })
+          }));
         }
       },
     );
-    return appointment;
+    return appointments;
   }
 
   addAppointment(appointment : AppointmentComponent) : AppointmentComponent {

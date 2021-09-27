@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {SlotService} from "../../services/slot.service";
 
 @Component({
   selector: 'app-prof-slots',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./prof-slots.component.scss']
 })
 export class ProfSlotsComponent implements OnInit {
-
-  constructor() { }
+slots :any=[];
+  constructor(private slotService:SlotService) { }
 
   ngOnInit(): void {
+    this.slots = this.slotService.getSlotsByUser(1)
   }
 
 }

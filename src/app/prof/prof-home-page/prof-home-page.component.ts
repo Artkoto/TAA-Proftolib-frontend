@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ProfComponent} from "../prof.component";
+import {ProfAuthComponent} from "../prof-auth/prof-auth.component";
 
 @Component({
   selector: 'app-prof-home-page',
@@ -12,6 +13,7 @@ export class ProfHomePageComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    this.prof = ProfAuthComponent.user;
   }
 
 }

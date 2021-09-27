@@ -1,9 +1,19 @@
 
-<div>
-  <a routerLink="">Home</a>
+<p-menubar [model]="menuItems">
+  <ng-template pTemplate="start" >
+
+  </ng-template>
+  <ng-template pTemplate="end">
+    <input type="text" pInputText placeholder="Search">
+    <button *ngIf="isConnectclient||isConnectProf" pButton label="Logout" icon="pi pi-power-off"></button>
+  </ng-template>
+</p-menubar>
+<div class="overflow-auto my-5" style="height: 41.5em">
   <router-outlet></router-outlet>
 </div>
-<!--<app-single-client></app-single-client>-->
-<!--<app-prof-view></app-prof-view>-->
-<!--<app-single-slot></app-single-slot>-->
-<!--<app-single-appointment></app-single-appointment>-->
+
+<footer class="p-fluid" >
+  <p style="font-size: 1.5rem">@Arkoto & KarimOugeur</p>
+</footer>
+
+

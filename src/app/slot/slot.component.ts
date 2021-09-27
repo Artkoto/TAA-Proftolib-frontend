@@ -10,8 +10,6 @@ export class SlotComponent implements OnInit {
   @Input() id : number = 0;
   @Input() begin : Date = new Date() ;
   @Input() end : Date = new Date() ;
-  @Input() profs : any =[];
-  @Input() appointments : any =[];
 
   constructor() { }
 

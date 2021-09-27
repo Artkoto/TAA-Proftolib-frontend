@@ -1,1 +1,7 @@
-<p>client-auth works!</p>
+<h1>Page de connexion Client</h1>
+<div class="p-inputgroup my-3">
+  <span class="p-inputgroup-addon col-12 md:col-3"><i>Email</i></span>
+  <input type="text" pInputText [(ngModel)]="login"  >
+</div>
+<button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn('test2@istic.fr')" >Connexion</button>
+<button pButton type="button" class="p-button-danger"*ngIf="getStatus()" (click)="onSingOut()"> Déconnexion</button>
