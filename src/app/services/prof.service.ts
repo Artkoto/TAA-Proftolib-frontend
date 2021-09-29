@@ -123,8 +123,9 @@ export class ProfService {
 
   updateProf(id : number , prof : ProfComponent) : ProfComponent {
     let profUpdated : ProfComponent = new ProfComponent();
-    this.http.put<User>(apiUrl+'prof/'+id+'/update',prof).subscribe((data) => {
-        console.log(data);
+    this.http.put<User>(apiUrl+'prof/'+id+'/update?email='+prof.email+
+      '&name='+prof.name
+      +'&lastname='+prof.lastname,prof).subscribe((data) => {
         if(data!=null) {
           profUpdated.id = data.id;
           profUpdated.name = data.name;
@@ -136,8 +137,8 @@ export class ProfService {
     return profUpdated;
   }
 
-  deleteProf(id : number)  {
-    this.http.delete<User>(apiUrl+id+'/delete')
+  deleteProf(id : number) : void {
+    this.http.delete<User>(apiUrl+id+'/delete').subscribe();
   }
 
   //filtre pour la recherche de film

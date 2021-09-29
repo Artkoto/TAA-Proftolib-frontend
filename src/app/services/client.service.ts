@@ -105,7 +105,9 @@ export class ClientService {
 
   updateClient(id : number , client : ClientComponent) : ClientComponent {
     let clientUpdated : ClientComponent = new ClientComponent();
-    this.http.put<User>(apiUrl+'client/'+id+'/update',client).subscribe((data) => {
+    this.http.put<User>(apiUrl+'prof/'+id+'/update?email='+client.email+
+      '&name='+client.name
+      +'&lastname='+client.lastname,client).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           clientUpdated.id = data.id;
@@ -119,7 +121,7 @@ export class ClientService {
   }
 
   deleteClient(id : number)  {
-    this.http.delete<User>(apiUrl+id+'/delete')
+    this.http.delete<User>(apiUrl+id+'/delete').subscribe();
   }
 
 }

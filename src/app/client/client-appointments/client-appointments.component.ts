@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {AppointmentService} from "../../services/appointment.service";
+import {ClientAuthComponent} from "../client-auth/client-auth.component";
 
 @Component({
   selector: 'app-client-appointments',
@@ -11,7 +12,7 @@ appointment : any = [];
   constructor(private appointmentService : AppointmentService) { }
 
   ngOnInit(): void {
-    this.appointment = this.appointmentService.getAppointmentByUser(2)
+    this.appointment = this.appointmentService.getAppointmentByUser(ClientAuthComponent.user.id)
   }
 
 }

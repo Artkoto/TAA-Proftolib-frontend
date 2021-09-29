@@ -31,7 +31,7 @@ export class ProfAuthComponent implements OnInit {
     ProfAuthComponent.user = this.authservice.user;
   }
 
-  onSingOut(){
+   onSingOut(){
     this.authservice.profSingOut();
     ProfAuthComponent.authStatus = this.authservice.profIsAuth ;
     this.route.navigate(['profApp/auth']);
@@ -39,6 +39,15 @@ export class ProfAuthComponent implements OnInit {
 
   getStatus() : boolean{
     return ProfAuthComponent.authStatus;
+  }
+
+  static  cloneUser(user : ProfComponent) : ProfComponent {
+    let userClone :  ProfComponent = new ProfComponent();
+    userClone.id = user.id;
+    userClone.name = user.name;
+    userClone.lastname = user.lastname;
+    userClone.email = user.email;
+    return userClone;
   }
 
 }

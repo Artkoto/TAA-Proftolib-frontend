@@ -5,7 +5,10 @@ import {ButtonModule} from 'primeng/button';
 import {InputTextModule} from "primeng/inputtext";
 import {FormsModule} from "@angular/forms";
 import {MenubarModule} from "primeng/menubar";
-import {SharedModule} from "primeng/api";
+import {ConfirmationService, SharedModule} from "primeng/api";
+import {ConfirmDialogModule} from 'primeng/confirmdialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 
 
 
@@ -71,8 +74,10 @@ import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
     FormsModule,
     MenubarModule,
     SharedModule,
+    ConfirmDialogModule,
+    BrowserAnimationsModule,
   ],
-  providers: [],
+  providers: [ ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

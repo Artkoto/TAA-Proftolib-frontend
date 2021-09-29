@@ -11,7 +11,7 @@ import {ClientComponent} from "../client.component";
 export  class ClientAuthComponent implements OnInit {
 
   static authStatus : boolean = false ;
-  static user : ClientComponent = new ClientComponent();
+  static user : ClientComponent ;
   login : string = '';
   constructor(private authservice : AuthService , private route: Router) { }
 
@@ -38,6 +38,15 @@ export  class ClientAuthComponent implements OnInit {
 
   getStatus() : boolean{
     return ClientAuthComponent.authStatus;
+  }
+
+  static  cloneUser(user : ClientComponent) : ClientComponent {
+    let userClone :  ClientComponent = new ClientComponent();
+    userClone.id = user.id;
+    userClone.name = user.name;
+    userClone.lastname = user.lastname;
+    userClone.email = user.email;
+    return userClone;
   }
 
 }
