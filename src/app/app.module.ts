@@ -36,6 +36,7 @@ import { ClientSettingsComponent } from './client/client-settings/client-setting
 import { ProfSettingsComponent } from './prof/prof-settings/prof-settings.component';
 import { AppointmentViewComponent } from './appointment/appointment-view/appointment-view.component';
 import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
+import {DialogModule} from "primeng/dialog";
 
 
 
@@ -76,6 +77,7 @@ import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
     SharedModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
+    DialogModule,
   ],
   providers: [ ConfirmationService],
   bootstrap: [AppComponent]

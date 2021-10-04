@@ -5,3 +5,6 @@
 </div>
 <button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn('test2@istic.fr')" >Connexion</button>
 <button pButton type="button" class="p-button-danger"*ngIf="getStatus()" (click)="onSingOut()"> Déconnexion</button>
+<br>
+<button pButton type="button" routerLink="../singup" class="p-button-primary my-5"> S'inscrire </button>
+

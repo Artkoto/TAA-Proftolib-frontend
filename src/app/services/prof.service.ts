@@ -108,7 +108,9 @@ export class ProfService {
 
   addProf(prof : ProfComponent) : ProfComponent {
     let profAdded: ProfComponent = new ProfComponent();
-    this.http.post<User>(apiUrl+'prof/add',prof).subscribe((data) => {
+    this.http.post<User>(apiUrl+'prof/add?email='+prof.email+
+    '&name='+prof.name
+    +'&lastname='+prof.lastname,prof).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           profAdded.id = data.id;

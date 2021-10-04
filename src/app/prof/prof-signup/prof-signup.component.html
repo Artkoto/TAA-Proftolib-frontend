@@ -1,1 +1,37 @@
-<p>prof-signup works!</p>
+<H3>Inscriptoion Prof </H3>
+
+<p-dialog  position="top" [(visible)]="displayDialog">
+
+  <ng-template pTemplate="header">
+    Impossible de créer l'utilisateur
+  </ng-template>
+  adresse email deja utilisée.
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
+
+</p-dialog>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<div class="mx-5">
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Nom</i></span>
+    <input type="text" pInputText [(ngModel)]="prof.name">
+  </div>
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Prenom</i></span>
+    <input type="text" pInputText [(ngModel)]="prof.lastname">
+  </div>
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Email</i></span>
+    <input type="text" pInputText [(ngModel)]="prof.email">
+  </div>
+
+  <div class="pi-align-right mt-5">
+    <button routerLink="../" pButton type="button" label="Annuler" class=" p-button-warning mx-2" ></button>
+    <button pButton type="button" label="Valider" (click)="create()" class=" p-button-success mx-2"></button>
+  </div>
+</div>
+
+

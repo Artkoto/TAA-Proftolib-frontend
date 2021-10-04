@@ -14,6 +14,8 @@ import {ProfAuthComponent} from "./prof/prof-auth/prof-auth.component";
 import {ClientAuthComponent} from "./client/client-auth/client-auth.component";
 import {ProfAuthGuardService} from "./services/prof-auth-guard.service";
 import {ClientAuthGuardService} from "./services/client-auth-guard.service";
+import {ClientSignupComponent} from "./client/client-signup/client-signup.component";
+import {ProfSignupComponent} from "./prof/prof-signup/prof-signup.component";
 
 const routes: Routes = [
   {path:'' ,component: HomePageComponent},
@@ -28,6 +30,8 @@ const routes: Routes = [
   {path: 'profApp/slots',canActivate: [ProfAuthGuardService], component: ProfSlotsComponent},
   {path: 'profApp/settings',canActivate: [ProfAuthGuardService], component: ProfSettingsComponent},
   {path: 'clientApp/professionals/:id',canActivate: [ClientAuthGuardService], component: SingleProfComponent},
+  {path: 'clientApp/singup', component: ClientSignupComponent },
+  {path: 'profApp/singup', component: ProfSignupComponent },
 ];
 
 @NgModule({

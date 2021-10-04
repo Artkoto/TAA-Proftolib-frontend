@@ -90,7 +90,9 @@ export class ClientService {
 
   addClient(client : ClientComponent) : ClientComponent {
     let clientAdded: ClientComponent = new ClientComponent();
-    this.http.post<User>(apiUrl+'client/add',client).subscribe((data) => {
+    this.http.post<User>(apiUrl+'client/add?email='+client.email+
+      '&name='+client.name
+      +'&lastname='+client.lastname,client).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           clientAdded.id = data.id;
