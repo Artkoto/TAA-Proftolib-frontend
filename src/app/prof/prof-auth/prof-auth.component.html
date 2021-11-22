@@ -1,10 +1,18 @@
-<h1>Page de connexion Pro</h1>
-<div class="p-inputgroup my-3">
-  <span class="p-inputgroup-addon col-12 md:col-3"><i>Email</i></span>
-  <input type="text" pInputText [(ngModel)]="login"  >
-</div>
-<button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn('test3@gmail.com')" >Connexion</button>
-<button pButton type="button" class="p-button-danger"*ngIf="getStatus()" (click)="onSingOut()"> Déconnexion</button>
-<br>
-<button pButton type="button" routerLink="../singup" class="p-button-primary my-5"> S'inscrire </button>
 
+<div style="margin:100px auto; width:40%; border: 0.01em solid; border-radius: 15px;">
+  <h1 style="margin:5% 40%; width:40%;">Connexion</h1>
+  <div class="" style="margin-left:50px; margin-top:50px;">
+    <span> Email</span>
+    <input style="width:40%; margin-left:70px;" type="text" pInputText [(ngModel)]="login"  placeholder="Email">
+  </div>
+  <div class="" style="margin-left:50px; margin-top:10px;">
+    <span>Mot de passe </span>
+    <input disabled="true" style="width:40%;; margin-left:20px;" type="Password" pInputText [(ngModel)]="login"  placeholder="Password Test">
+  </div>
+  <div style=" margin-left:50px; margin-top:50px;">
+    <button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn(login)" >Connexion</button>
+    <button pButton type="button" class="p-button-danger"*ngIf="getStatus()" (click)="onSingOut()"> Déconnexion</button>
+    <br>
+    <button pButton type="button" routerLink="../singup" class="p-button-primary my-5"> S'inscrire </button>
+  </div>
+</div>

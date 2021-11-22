@@ -8,11 +8,14 @@ import {ClientAuthComponent} from "../client-auth/client-auth.component";
   styleUrls: ['./client-appointments.component.scss']
 })
 export class ClientAppointmentsComponent implements OnInit {
-appointment : any = [];
+  appointments : any = [];
   constructor(private appointmentService : AppointmentService) { }
 
   ngOnInit(): void {
-    this.appointment = this.appointmentService.getAppointmentByUser(ClientAuthComponent.user.id)
+    this.appointments = this.appointmentService.getAppointmentByUser(ClientAuthComponent.user.id)
+
   }
+
+
 
 }
