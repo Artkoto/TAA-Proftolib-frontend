@@ -10,7 +10,7 @@
     <input disabled="true" style="width:40%;; margin-left:20px;" type="Password" pInputText [(ngModel)]="login"  placeholder="Password Test">
   </div>
   <div style=" margin-left:50px; margin-top:50px;">
-    <button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn(login)" >Connexion</button>
+    <button pButton type="button" class="p-button-success" *ngIf="!getStatus()" (click)="onSingIn('test3@gmail.com')" >Connexion</button>
     <button pButton type="button" class="p-button-danger"*ngIf="getStatus()" (click)="onSingOut()"> Déconnexion</button>
     <br>
     <button pButton type="button" routerLink="../singup" class="p-button-primary my-5"> S'inscrire </button>
