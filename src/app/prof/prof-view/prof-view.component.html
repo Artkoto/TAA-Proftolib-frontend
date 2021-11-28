@@ -1,13 +1,15 @@
-<div >
-  <ul >
-    <app-prof *ngFor = "let prof  of profs"
-              [id] = "prof.id"
-              [name] = "prof.name"
-              [lastname]="prof.lastname"
-              [email]="prof.email"
-    >
-    </app-prof>
-  </ul>
-  <button routerLink="../" pButton type="button" label="Retour" class=" p-button-warning mx-2" ></button>
+<div>
+  <div class="grid my-5">
+      <app-prof class="col-12 sm:col-6 lg:col-4 md:col-4 xl:col-3 my-1 content-container2"
+        *ngFor="let prof  of profs"
+                [id]="prof.id"
+                [name]="prof.name"
+                [lastname]="prof.lastname"
+                [email]="prof.email"
+
+      >
+      </app-prof>
+  </div>
+  <button routerLink="../" pButton type="button" label="Retour" class=" p-button-warning mx-2"></button>
 
 </div>

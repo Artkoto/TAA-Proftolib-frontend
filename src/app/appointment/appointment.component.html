@@ -1,6 +1,5 @@
-<div [ngClass]="{ 'list-group-item' : true }">
-        <ul>
-        <li style=" margin-left:1%; font-size: 1.25em">{{title | titlecase |slice:0:150}}</li>
-        </ul>
- <div>
-
+<div [ngClass]="{ 'list-group-item' : true }" class="my-3 mx-4 rdvs" routerLink={{id}}>
+  <tr>
+    <td style=" margin-left:1%; font-size: 1.25em">{{title | titlecase |slice:0:150}}</td>
+  </tr>
+</div>

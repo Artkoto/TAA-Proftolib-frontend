@@ -101,7 +101,7 @@ export class AppointmentService {
 
   updateAppointment(id : number , appointment : AppointmentComponent) : AppointmentComponent {
     let appointmentUpdated : AppointmentComponent = new AppointmentComponent();
-    this.http.put<Appointment>(apiUrl+id+'/update',appointment).subscribe((data) => {
+    this.http.put<Appointment>(apiUrl+id+'/update?title='+appointment.title,appointment).subscribe((data) => {
         console.log(data);
         if(data!=null) {
           appointmentUpdated.id = data.id;
@@ -113,7 +113,7 @@ export class AppointmentService {
   }
 
   deleteAppointment(id : number)  {
-    this.http.delete<Appointment>(apiUrl+id+'/delete')
+    this.http.delete<Appointment>(apiUrl+id+'/delete').subscribe();
   }
 
 }

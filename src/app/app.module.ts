@@ -34,7 +34,6 @@ import { ProfHomePageComponent } from './prof/prof-home-page/prof-home-page.comp
 import { HomePageComponent } from './home-page/home-page.component';
 import { ClientSettingsComponent } from './client/client-settings/client-settings.component';
 import { ProfSettingsComponent } from './prof/prof-settings/prof-settings.component';
-import { AppointmentViewComponent } from './appointment/appointment-view/appointment-view.component';
 import { ProfSlotsComponent } from './prof/prof-slots/prof-slots.component';
 import {DialogModule} from "primeng/dialog";
 
@@ -63,7 +62,6 @@ import {DialogModule} from "primeng/dialog";
     HomePageComponent,
     ClientSettingsComponent,
     ProfSettingsComponent,
-    AppointmentViewComponent,
     ProfSlotsComponent
   ],
   imports: [

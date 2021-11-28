@@ -1,3 +1,27 @@
-<p>single-appointment works!</p>
-<p>{{appointment.id}}</p>
-<p>{{appointment.title}}</p>
+<H3 style="margin-left:45%">Gérer votre rendez-vous</H3>
+
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
+
+<div style="width:40vw;margin: auto auto; ">
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Motif du rendez-vous</i></span>
+    <input type="text" pInputText [(ngModel)]="appointment.title">
+  </div>
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Date de debut</i></span>
+    <input disabled="true" type="date" pInputText [(ngModel)]="slot.begin">
+  </div>
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Date de fin</i></span>
+    <input disabled="true" type="date" pInputText [(ngModel)]="slot.end">
+  </div>
+
+  <div class="pi-align-right mt-5">
+    <button routerLink="../" pButton type="button" label="Retour" class=" p-button-warning mx-2"></button>
+        <button pButton type="button" label="Modiffier" (click)="update()" class=" p-button-success mx-2"></button>
+        <button pButton type="button" label="Supprimer" (click)="delete()"  class=" p-button-danger mx-2"></button>
+  </div>
+</div>
+
+
+

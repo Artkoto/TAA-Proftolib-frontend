@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {MenuItem} from "primeng/api";
 import {ProfAuthComponent} from "./prof/prof-auth/prof-auth.component";
 import {ClientAuthComponent} from "./client/client-auth/client-auth.component";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-root',
@@ -10,43 +11,44 @@ import {ClientAuthComponent} from "./client/client-auth/client-auth.component";
 })
 export class AppComponent {
   title = 'proftolib';
-  isConnectProf: boolean = ProfAuthComponent.authStatus ;
-  isConnectclient: boolean =ClientAuthComponent.authStatus;
   menuItems: MenuItem []=[]  ;
+
+  constructor(private route: Router ) { }
 
   ngOnInit() {
     this.menuItems = [
       {
-        label: 'Home',
-        icon: 'pi pi-fw pi-home',
+        label: 'Aller au choix du site',
+        icon: 'pi pi-fw pi-th-large',
         routerLink:'/',
       },
-      //
-    /*  {
-        label: 'File',
-        items: [{
-          label: 'New',
-          icon: 'pi pi-fw pi-plus',
-          items: [
-            {label: 'Project'},
-            {label: 'Other'},
-          ]
-        },
-          {label: 'Open'},
-          {label: 'Quit'}
-        ]
-      },
-      {
-        label: 'Edit',
-        icon: 'pi pi-fw pi-pencil',
-        items: [
-          {label: 'Delete', icon: 'pi pi-fw pi-trash'},
-          {label: 'Refresh', icon: 'pi pi-fw pi-refresh'}
-        ]
-      },*/
-      //
-
     ];
+  }
+
+  checkStatus() : boolean{
+    return ProfAuthComponent.authStatus || ClientAuthComponent.authStatus;
+  }
+
+  getHomeurl():string{
+    return (ProfAuthComponent.authStatus)?'profApp/':'clientApp'
+  }
+  getUsername():string{
+    if(ProfAuthComponent.authStatus){
+      return ProfAuthComponent.user.name+' '+ProfAuthComponent.user.lastname;
+    }else {
+      return ClientAuthComponent.user.name+' '+ClientAuthComponent.user.lastname;
+    }
+
+  }
+
+  deconnexion() : void {
+      if(ProfAuthComponent.authStatus){
+          ProfAuthComponent.topmenudeconnection=true;
+          this.route.navigate(['profApp/auth']);
+      }else{
+        ClientAuthComponent.topmenudeconnection=true;
+        this.route.navigate(['clientApp/auth']);
+      }
   }
 
 }

@@ -11,12 +11,16 @@ import {ProfComponent} from "../prof.component";
 export class ProfAuthComponent implements OnInit {
 
    static authStatus : boolean = false ;
+   static topmenudeconnection : boolean = false;
    static user : ProfComponent ;
    login :string ='';
   constructor(private authservice : AuthService , private route: Router ) { }
 
 
   ngOnInit(): void {
+    if (ProfAuthComponent.topmenudeconnection){
+      this.onSingOut();
+    }
     ProfAuthComponent.authStatus = this.authservice.profIsAuth ;
   }
   onSingIn(login : string){

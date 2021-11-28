@@ -1,8 +1,27 @@
 <div>
-  <h2>{{prof.name +' '+ prof.lastname}}</h2>
-  <div class="flex-column mt-5" >
-    <button routerLink="appointments" pButton type="button" label="Voir les RDV" class="p-button-outlined mx-5"></button>
-    <button routerLink="slots" pButton type="button" label="Voir les Créneaux" class="p-button-outlined p-button-danger mx-5"></button>
-    <button routerLink="settings" pButton type="button" label="settings" class="p-button-outlined p-button-secondary mx-5"></button>
+  <div class="grid mx-8 my-8">
+    <div class="col p-fluid mx-5 mt-2 content-container" routerLink="appointments" style="background-color:indigo; ">
+      <div class="content">
+        <p class="menuTitle">
+          Voir les RDV
+        </p>
+      </div>
+    </div>
+    <div class="col p-fluid mx-5 mt-2 content-container" routerLink="slots"
+         style="background-color:indianred;">
+      <div class="content">
+        <p class="menuTitle">
+          Voir les Créneaux
+        </p>
+      </div>
+    </div>
+    <div class="col p-fluid mx-5 mt-2 content-container" routerLink="settings"
+         style="background-color:darkkhaki;">
+      <div class="content">
+        <p class="menuTitle">
+          Modifier profil
+        </p>
+      </div>
+    </div>
   </div>
 </div>

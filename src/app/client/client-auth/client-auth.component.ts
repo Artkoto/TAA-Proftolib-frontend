@@ -11,11 +11,15 @@ import {ClientComponent} from "../client.component";
 export  class ClientAuthComponent implements OnInit {
 
   static authStatus : boolean = false ;
+  static topmenudeconnection : boolean = false;
   static user : ClientComponent ;
   login : string = '';
   constructor(private authservice : AuthService , private route: Router) { }
 
   ngOnInit(): void {
+    if(ClientAuthComponent.topmenudeconnection){
+      this.onSingOut();
+    }
     ClientAuthComponent.authStatus = this.authservice.clientIsAuth ;
   }
 
@@ -24,6 +28,7 @@ export  class ClientAuthComponent implements OnInit {
       () => {
         //console.log('Connecté avec success');
         this.authservice.profSingOut();
+        ClientAuthComponent.authStatus = this.authservice.clientIsAuth;
         this.route.navigate(['clientApp/']);
       }
     );

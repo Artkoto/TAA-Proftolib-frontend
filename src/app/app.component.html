@@ -1,19 +1,23 @@
+<div class="body2">
+  <p-menubar [model]="menuItems">
+    <ng-template pTemplate="start">
+      <button *ngIf="checkStatus()" pButton label="Accueil" icon="pi pi-home" routerLink="{{getHomeurl()}}"></button>
+    </ng-template>
+    <ng-template pTemplate="end">
+      <label class="usernameTopbar" *ngIf="checkStatus()"> {{getUsername()}} </label>
+      <button *ngIf="checkStatus()" pButton label="Déconnexion" class="p-button-danger mx-3" (click)="deconnexion()" icon="pi pi-power-off"></button>
+    </ng-template>
+  </p-menubar>
+  <div class="mt-5">
+    <router-outlet></router-outlet>
+  </div>
 
-<p-menubar [model]="menuItems">
-  <ng-template pTemplate="start" >
 
-  </ng-template>
-  <ng-template pTemplate="end">
-    <input type="text" pInputText placeholder="Search">
-    <button *ngIf="isConnectclient||isConnectProf" pButton label="Logout" icon="pi pi-power-off"></button>
-  </ng-template>
-</p-menubar>
-<div class="overflow-auto my-5" style="height: 41.5em">
-  <router-outlet></router-outlet>
+<footer class="p-fluid">
+  <p style="font-size: 1.5rem">© Arnaud Akoto & Karim Ougueur</p>
+</footer>
 </div>
 
-<footer class="p-fluid" >
-  <p style="font-size: 1.5rem">Arnaud Akoto & Karim Ougueur</p>
-</footer>
+
 
 
