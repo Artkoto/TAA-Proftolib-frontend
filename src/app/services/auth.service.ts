@@ -17,7 +17,6 @@ export class AuthService {
       (resolve,reject) => {
         setTimeout(
           ()=>{
-            // this.user = this.clientservice.getClientByEmail(this.login)
             if (this.user.id != 0) {
               this.clientIsAuth = true;
             }
@@ -39,7 +38,6 @@ export class AuthService {
       (resolve,reject) => {
         setTimeout(
           ()=>{
-           // this.user = this.profservice.getProfByEmail(this.login)
             if (this.user.id != 0) {
               this.profIsAuth = true;
             }

@@ -1,27 +1,45 @@
-<!--<H3 style="margin-left:45%">Modifier votre profil </H3>-->
+<H3 style="margin-left:45%">Prendre un rendez-vous avec {{prof.lastname + ' ' + prof.name}} </H3>
 
-<!--<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>-->
+<p-dialog  position="top" [(visible)]="displayDialog">
 
-<!--<div style="width:40vw;margin: auto auto; ">-->
-<!--  <div class="p-inputgroup my-3">-->
-<!--    <span class="p-inputgroup-addon col-12 md:col-3"><i>Nom</i></span>-->
-<!--    <input type="text" pInputText [(ngModel)]="">-->
-<!--  </div>-->
-<!--  <div class="p-inputgroup my-3">-->
-<!--    <span class="p-inputgroup-addon col-12 md:col-3"><i>Prenom</i></span>-->
-<!--    <input type="text" pInputText [(ngModel)]="">-->
-<!--  </div>-->
-<!--  <div class="p-inputgroup my-3">-->
-<!--    <span class="p-inputgroup-addon col-12 md:col-3"><i>Email</i></span>-->
-<!--    <input type="text" pInputText [(ngModel)]="">-->
-<!--  </div>-->
+  <ng-template pTemplate="header">
+    Impossible de prendre rendez-vous
+  </ng-template>
+  Vous devez selectionner un créneau valide pour prendre rendez-vous.
+  <ng-template pTemplate="footer">
+    <p-button icon="pi pi-check" (click)="displayDialog=false" label="Ok" styleClass="p-button-text"></p-button>
+  </ng-template>
 
-<!--  <div class="pi-align-right mt-5">-->
-<!--    <button routerLink="../" pButton type="button" label="Annuler" class=" p-button-warning mx-2" ></button>-->
-<!--    <button pButton type="button" label="Modiffier"  class=" p-button-success mx-2"></button>-->
-<!--    <button pButton type="button" label="Supprimer votre compte"  class=" p-button-danger mx-2"></button>-->
-<!--  </div>-->
-<!--</div>-->
+</p-dialog>
 
 
+<p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle"></p-confirmDialog>
 
+<div style="width:40vw;margin: auto auto; ">
+  <div class=" grid my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>Selectionnez un créneau</i></span>
+    <p-dropdown [options]="slots" [(ngModel)]="slot"
+                emptyMessage="Pas de crénaux disponible" placeholder="Select a Country">
+      <ng-template let-slot1  pTemplate="item">
+        <div class="">
+          <div>{{'Du'}} {{slot1.begin | date}} {{'au'}} {{slot1.end |date}}</div>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="selectedItem">
+        <div class="">
+          <div> {{'Du'}} {{slot.begin | date}} {{'au'}} {{slot.end |date}}</div>
+        </div>
+      </ng-template>
+    </p-dropdown>
+  </div>
+  <div class="p-inputgroup my-3">
+    <span class="p-inputgroup-addon col-12 md:col-3"><i>motif du rendez-vous</i></span>
+    <input type="text" pInputText [(ngModel)]="appointment.title">
+  </div>
+
+  <div class="pi-align-right mt-5">
+    <button routerLink="../" pButton type="button" label="Annuler" class=" p-button-warning mx-2"></button>
+    <button pButton type="button" label="Valider le rendez-vous" (click)="prendrerdv()"
+            class=" p-button-success mx-2"></button>
+  </div>
+</div>

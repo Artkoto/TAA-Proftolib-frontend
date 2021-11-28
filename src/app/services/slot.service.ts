@@ -27,7 +27,7 @@ export class SlotService {
   constructor(private http:HttpClient){
   }
 
-  getSlots() : ProfComponent[] {
+  getSlots() : SlotComponent[] {
     let slots : any []= [] ;
     this.http.get<Slot[]>(apiUrl+'all').subscribe((data) => {
         console.log(data);
@@ -43,7 +43,7 @@ export class SlotService {
     return slots;
   }
 
-  getSlotsByUser(id : number) : ProfComponent[] {
+  getSlotsByUser(id : number) : SlotComponent[] {
     let slots : any []= [] ;
     this.http.get<Slot[]>(apiUrl+'user/id='+id).subscribe((data) => {
         console.log(data);

@@ -1,21 +1,27 @@
-import { HttpClient } from '@angular/common/http';
-import{Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {Injectable} from '@angular/core';
 import {AppointmentComponent} from "../appointment/appointment.component";
+import {ClientComponent} from "../client/client.component";
+import {ProfComponent} from "../prof/prof.component";
+import {SlotComponent} from "../slot/slot.component";
 
-const apiUrl ='http://localhost:9000/rdv/';
+const apiUrl = 'http://localhost:9000/rdv/';
+
 export interface User {
-  id:       number;
-  email:    string;
-  name:     string;
+  id: number;
+  email: string;
+  name: string;
   lastname: string;
 }
+
 export interface Slot {
-  id:    number;
+  id: number;
   debut: Date;
-  fin:   Date;
+  fin: Date;
 }
+
 export interface Appointment {
-  id:    number;
+  id: number;
   title: string;
 }
 
@@ -23,15 +29,15 @@ export interface Appointment {
 @Injectable({providedIn: 'root'})
 export class AppointmentService {
 
-  constructor(private http:HttpClient){
+  constructor(private http: HttpClient) {
   }
 
 
-  getAppointmentById(id : number) : AppointmentComponent {
-    let appointment : AppointmentComponent = new AppointmentComponent();
-    this.http.get<Appointment>(apiUrl+'id='+id).subscribe((data) => {
+  getAppointmentById(id: number): AppointmentComponent {
+    let appointment: AppointmentComponent = new AppointmentComponent();
+    this.http.get<Appointment>(apiUrl + 'id=' + id).subscribe((data) => {
         console.log(data);
-        if(data!=null) {
+        if (data != null) {
           appointment.id = data.id;
           appointment.title = data.title;
         }
@@ -40,11 +46,11 @@ export class AppointmentService {
     return appointment;
   }
 
-  getAppointmentByTitle(title : String) : AppointmentComponent {
-    let appointment : AppointmentComponent = new AppointmentComponent();
-    this.http.get<Appointment>(apiUrl+'title='+title).subscribe((data) => {
+  getAppointmentByTitle(title: String): AppointmentComponent {
+    let appointment: AppointmentComponent = new AppointmentComponent();
+    this.http.get<Appointment>(apiUrl + 'title=' + title).subscribe((data) => {
         console.log(data);
-        if(data!=null) {
+        if (data != null) {
           appointment.id = data.id;
           appointment.title = data.title;
         }
@@ -53,31 +59,15 @@ export class AppointmentService {
     return appointment;
   }
 
-  getAppointmentByUser(id : number) : any[] {
-    let appointments : any[] = [];
-    this.http.get<Appointment[]>(apiUrl+'user/id='+id).subscribe((data) => {
+  getAppointmentByUser(id: number): any[] {
+    let appointments: any[] = [];
+    this.http.get<Appointment[]>(apiUrl + 'user/id=' + id).subscribe((data) => {
         console.log(data);
-        if(data!=null) {
-          data.forEach(((e)  => {
+        if (data != null) {
+          data.forEach(((e) => {
             appointments.push({
-              id : e.id,
-              title : e.title,
-            })
-          }));
-        }
-      },
-    );
-    return appointments;
-  }
-  getAppointmentBySlot(id : number) : any[] {
-    let appointments  :any[]=[];
-    this.http.get<Appointment[]>(apiUrl+'creneau/id='+id).subscribe((data) => {
-        console.log(data);
-        if(data!=null) {
-          data.forEach(((e)  => {
-            appointments.push({
-              id : e.id,
-              title : e.title,
+              id: e.id,
+              title: e.title,
             })
           }));
         }
@@ -86,11 +76,29 @@ export class AppointmentService {
     return appointments;
   }
 
-  addAppointment(appointment : AppointmentComponent) : AppointmentComponent {
+  getAppointmentBySlot(id: number): any[] {
+    let appointments: any[] = [];
+    this.http.get<Appointment[]>(apiUrl + 'creneau/id=' + id).subscribe((data) => {
+        console.log(data);
+        if (data != null) {
+          data.forEach(((e) => {
+            appointments.push({
+              id: e.id,
+              title: e.title,
+            })
+          }));
+        }
+      },
+    );
+    return appointments;
+  }
+
+  addAppointment(appointment: AppointmentComponent, client: ClientComponent, prof: ProfComponent, slot: SlotComponent): AppointmentComponent {
     let appointmentAdded: AppointmentComponent = new AppointmentComponent();
-    this.http.post<Appointment>(apiUrl+'add',appointment).subscribe((data) => {
+    this.http.post<Appointment>(apiUrl + 'add?title=' + appointment.title + '&client.id=' + client.id + '&prof.id=' + prof.id + '&creneau=' + slot.id,
+      appointment).subscribe((data) => {
         console.log(data);
-        if(data!=null) {
+        if (data != null) {
           appointmentAdded.id = data.id;
           appointmentAdded.title = data.title;
         }
@@ -99,11 +107,11 @@ export class AppointmentService {
     return appointmentAdded;
   }
 
-  updateAppointment(id : number , appointment : AppointmentComponent) : AppointmentComponent {
-    let appointmentUpdated : AppointmentComponent = new AppointmentComponent();
-    this.http.put<Appointment>(apiUrl+id+'/update?title='+appointment.title,appointment).subscribe((data) => {
+  updateAppointment(id: number, appointment: AppointmentComponent): AppointmentComponent {
+    let appointmentUpdated: AppointmentComponent = new AppointmentComponent();
+    this.http.put<Appointment>(apiUrl + id + '/update?title=' + appointment.title, appointment).subscribe((data) => {
         console.log(data);
-        if(data!=null) {
+        if (data != null) {
           appointmentUpdated.id = data.id;
           appointmentUpdated.title = data.title;
         }
@@ -112,8 +120,8 @@ export class AppointmentService {
     return appointmentUpdated;
   }
 
-  deleteAppointment(id : number)  {
-    this.http.delete<Appointment>(apiUrl+id+'/delete').subscribe();
+  deleteAppointment(id: number) {
+    this.http.delete<Appointment>(apiUrl + id + '/delete').subscribe();
   }
 
 }

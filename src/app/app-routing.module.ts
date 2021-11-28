@@ -17,6 +17,7 @@ import {ClientAuthGuardService} from "./services/client-auth-guard.service";
 import {ClientSignupComponent} from "./client/client-signup/client-signup.component";
 import {ProfSignupComponent} from "./prof/prof-signup/prof-signup.component";
 import {SingleAppointmentComponent} from "./appointment/single-appointment/single-appointment.component";
+import {SingleSlotComponent} from "./slot/single-slot/single-slot.component";
 
 const routes: Routes = [
   {path:'' ,component: HomePageComponent},
@@ -29,6 +30,7 @@ const routes: Routes = [
   {path: 'clientApp/settings',canActivate: [ClientAuthGuardService], component: ClientSettingsComponent},
   {path: 'profApp/appointments',canActivate: [ProfAuthGuardService], component: ProfAppointmentsComponent},
   {path: 'profApp/slots',canActivate: [ProfAuthGuardService], component: ProfSlotsComponent},
+  {path: 'profApp/slots/:id',canActivate: [ProfAuthGuardService], component: SingleSlotComponent},
   {path: 'profApp/settings',canActivate: [ProfAuthGuardService], component: ProfSettingsComponent},
   {path: 'clientApp/professionals/:id',canActivate: [ClientAuthGuardService], component: SingleProfComponent},
   {path: 'clientApp/appointments/:id',canActivate: [ClientAuthGuardService], component: SingleAppointmentComponent},

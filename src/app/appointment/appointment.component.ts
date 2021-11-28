@@ -9,9 +9,6 @@ export class AppointmentComponent implements OnInit {
 
   @Input() id : number = 0;
   @Input() title : string = '';
-  @Input() prof : any ;
-  @Input() client : any ;
-  @Input() slot : any  ;
 
 
   constructor() { }

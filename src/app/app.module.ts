@@ -8,6 +8,7 @@ import {MenubarModule} from "primeng/menubar";
 import {ConfirmationService, SharedModule} from "primeng/api";
 import {ConfirmDialogModule} from 'primeng/confirmdialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {DropdownModule} from 'primeng/dropdown';
 
 
 
@@ -73,6 +74,7 @@ import {DialogModule} from "primeng/dialog";
     FormsModule,
     MenubarModule,
     SharedModule,
+    DropdownModule,
     ConfirmDialogModule,
     BrowserAnimationsModule,
     DialogModule,

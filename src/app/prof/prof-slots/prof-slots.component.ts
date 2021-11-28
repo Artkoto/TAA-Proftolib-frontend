@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {SlotService} from "../../services/slot.service";
+import {ProfAuthComponent} from "../prof-auth/prof-auth.component";
 
 @Component({
   selector: 'app-prof-slots',
@@ -11,7 +12,7 @@ slots :any=[];
   constructor(private slotService:SlotService) { }
 
   ngOnInit(): void {
-    this.slots = this.slotService.getSlotsByUser(1)
+    this.slots = this.slotService.getSlotsByUser(ProfAuthComponent.user.id)
   }
 
 }
